@@ -2,7 +2,6 @@ package net.wesjd.anvilgui;
 
 import net.wesjd.anvilgui.version.VersionMatcher;
 import net.wesjd.anvilgui.version.VersionWrapper;
-import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -18,6 +17,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 
+import java.util.Objects;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 
@@ -32,7 +32,7 @@ public class AnvilGUI {
     /**
      * The local {@link VersionWrapper} object for the server's version
      */
-    private static VersionWrapper WRAPPER = new VersionMatcher().match();
+    private static final VersionWrapper WRAPPER = new VersionMatcher().match();
 
     /**
      * The {@link Plugin} that this anvil GUI is associated with
@@ -45,7 +45,7 @@ public class AnvilGUI {
     /**
      * The title of the anvil inventory
      */
-    private String inventoryTitle;
+    private final String inventoryTitle;
     /**
      * The ItemStack that is in the {@link Slot#INPUT_LEFT} slot.
      */
@@ -53,7 +53,7 @@ public class AnvilGUI {
     /**
      * The ItemStack that is in the {@link Slot#INPUT_RIGHT} slot.
      */
-    private ItemStack inputRight;
+    private final ItemStack inputRight;
     /**
      * A state that decides where the anvil GUI is able to be closed by the user
      */
@@ -361,7 +361,7 @@ public class AnvilGUI {
          * @throws IllegalArgumentException when the closeListener is null
          */
         public Builder onClose(Consumer<Player> closeListener) {
-            Validate.notNull(closeListener, "closeListener cannot be null");
+            Objects.requireNonNull(closeListener, "closeListener cannot be null");
             this.closeListener = closeListener;
             return this;
         }
@@ -396,7 +396,7 @@ public class AnvilGUI {
          * @throws IllegalArgumentException when the completeFunction is null
          */
         public Builder onComplete(BiFunction<Player, String, Response> completeFunction) {
-            Validate.notNull(completeFunction, "Complete function cannot be null");
+            Objects.requireNonNull(completeFunction, "Complete function cannot be null");
             this.completeFunction = completeFunction;
             return this;
         }
@@ -409,7 +409,7 @@ public class AnvilGUI {
          * @throws IllegalArgumentException if the plugin is null
          */
         public Builder plugin(Plugin plugin) {
-            Validate.notNull(plugin, "Plugin cannot be null");
+            Objects.requireNonNull(plugin, "Plugin cannot be null");
             this.plugin = plugin;
             return this;
         }
@@ -422,7 +422,7 @@ public class AnvilGUI {
          * @throws IllegalArgumentException if the text is null
          */
         public Builder text(String text) {
-            Validate.notNull(text, "Text cannot be null");
+            Objects.requireNonNull(text, "Text cannot be null");
             this.itemText = text;
             return this;
         }
@@ -435,7 +435,7 @@ public class AnvilGUI {
          * @throws IllegalArgumentException if the title is null
          */
         public Builder title(String title) {
-            Validate.notNull(title, "title cannot be null");
+            Objects.requireNonNull(title, "title cannot be null");
             this.title = title;
             return this;
         }
@@ -461,7 +461,7 @@ public class AnvilGUI {
          * @throws IllegalArgumentException if the {@link ItemStack} is null
          */
         public Builder itemLeft(ItemStack item) {
-            Validate.notNull(item, "item cannot be null");
+            Objects.requireNonNull(item, "item cannot be null");
             this.itemLeft = item;
             return this;
         }
@@ -485,9 +485,9 @@ public class AnvilGUI {
          * @throws IllegalArgumentException when the onComplete function, plugin, or player is null
          */
         public AnvilGUI open(Player player) {
-            Validate.notNull(plugin, "Plugin cannot be null");
-            Validate.notNull(completeFunction, "Complete function cannot be null");
-            Validate.notNull(player, "Player cannot be null");
+            Objects.requireNonNull(plugin, "Plugin cannot be null");
+            Objects.requireNonNull(completeFunction, "Complete function cannot be null");
+            Objects.requireNonNull(player, "Player cannot be null");
             return new AnvilGUI(plugin, player, title, itemText, itemLeft, itemRight, preventClose, closeListener, inputLeftClickListener, inputRightClickListener, completeFunction);
         }
 
