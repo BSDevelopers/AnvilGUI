@@ -77,6 +77,14 @@
                                     </dependency>
                                 </dependencies>
                             </property>
+                            <property>
+                                <name>api.version</name>
+                                <dependencies>
+                                    <dependency>
+                                        <groupId>net.wesjd</groupId>
+                                    </dependency>
+                                </dependencies>
+                            </property>
                         </properties>
                     </configuration>
                 </plugin>
