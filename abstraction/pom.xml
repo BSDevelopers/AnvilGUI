@@ -7,9 +7,10 @@
     <parent>
         <groupId>net.wesjd</groupId>
         <artifactId>anvilgui-parent</artifactId>
-        <version>1.5.4-CUSTOM</version>
+        <version>1</version>
     </parent>
 
+    <version>${api.version}</version>
     <artifactId>anvilgui-abstraction</artifactId>
 
     <dependencies>

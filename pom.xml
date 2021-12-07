@@ -6,10 +6,11 @@
 
     <groupId>net.wesjd</groupId>
     <artifactId>anvilgui-parent</artifactId>
-    <version>1.5.4-CUSTOM</version>
+    <version>1</version>
     <packaging>pom</packaging>
 
     <properties>
+        <api.version>1.5.5-CUSTOM</api.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 

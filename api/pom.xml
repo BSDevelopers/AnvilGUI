@@ -7,9 +7,10 @@
     <parent>
         <groupId>net.wesjd</groupId>
         <artifactId>anvilgui-parent</artifactId>
-        <version>1.5.4-CUSTOM</version>
+        <version>1</version>
     </parent>
 
+    <version>${api.version}</version>
     <artifactId>anvilgui</artifactId>
 
     <dependencies>
@@ -22,25 +23,25 @@
         <dependency>
             <groupId>net.wesjd</groupId>
             <artifactId>anvilgui-abstraction</artifactId>
-            <version>${project.parent.version}</version>
+            <version>${api.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>net.wesjd</groupId>
             <artifactId>anvilgui-1_17_R1</artifactId>
-            <version>${project.parent.version}</version>
+            <version>${api.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>net.wesjd</groupId>
             <artifactId>anvilgui-1_17_1_R1</artifactId>
-            <version>${project.parent.version}</version>
+            <version>${api.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>net.wesjd</groupId>
             <artifactId>anvilgui-1_18_R1</artifactId>
-            <version>${project.parent.version}</version>
+            <version>${api.version}</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
