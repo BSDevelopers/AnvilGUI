@@ -1,15 +1,14 @@
 package net.wesjd.anvilgui.version;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.ChatComponentText;
 import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.protocol.game.PacketPlayOutCloseWindow;
-import net.minecraft.network.protocol.game.PacketPlayOutOpenWindow;
+import net.minecraft.network.protocol.game.ClientboundContainerClosePacket;
+import net.minecraft.network.protocol.game.ClientboundOpenScreenPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.AnvilMenu;
 import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.Containers;
+import net.minecraft.world.inventory.MenuType;
 import org.bukkit.craftbukkit.v1_18_R1.CraftWorld;
 import org.bukkit.craftbukkit.v1_18_R1.entity.CraftPlayer;
 import org.bukkit.craftbukkit.v1_18_R1.event.CraftEventFactory;
@@ -43,12 +42,12 @@ public final class Wrapper1_18_R1 implements VersionWrapper {
 
     @Override
     public void sendPacketOpenWindow(Player player, int containerId, String inventoryTitle) {
-        toNMS(player).connection.send(new PacketPlayOutOpenWindow(containerId, Containers.ANVIL, new ChatComponentText(inventoryTitle)));
+        toNMS(player).connection.send(new ClientboundOpenScreenPacket(containerId, MenuType.ANVIL, new TextComponent(inventoryTitle)));
     }
 
     @Override
     public void sendPacketCloseWindow(Player player, int containerId) {
-        toNMS(player).connection.send(new PacketPlayOutCloseWindow(containerId));
+        toNMS(player).connection.send(new ClientboundContainerClosePacket(containerId));
     }
 
     @Override
