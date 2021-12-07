@@ -12,7 +12,6 @@ import net.minecraft.world.inventory.Container;
 import net.minecraft.world.inventory.ContainerAccess;
 import net.minecraft.world.inventory.ContainerAnvil;
 import net.minecraft.world.inventory.Containers;
-import net.wesjd.anvilgui.version.special.AnvilContainer1_17_1_R1;
 import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_17_R1.CraftWorld;
 import org.bukkit.craftbukkit.v1_17_R1.entity.CraftPlayer;
@@ -34,7 +33,7 @@ public class Wrapper1_17_R1 implements VersionWrapper {
     @Override
     public int getNextContainerId(Player player, Object container) {
         if (IS_ONE_SEVENTEEN_ONE){
-            return ((AnvilContainer1_17_1_R1) container).getContainerId();
+            return ((net.wesjd.anvilgui.version.special.AnvilContainer1_17_1_R1) container).getContainerId();
         }
         return ((AnvilContainer) container).getContainerId();
     }
@@ -68,7 +67,7 @@ public class Wrapper1_17_R1 implements VersionWrapper {
      */
     @Override
     public void setActiveContainerDefault(Player player) {
-        (toNMS(player)).bV = (Container)(toNMS(player)).bU;
+        (toNMS(player)).bV = (toNMS(player)).bU;
     }
 
     /**
@@ -109,7 +108,7 @@ public class Wrapper1_17_R1 implements VersionWrapper {
     @Override
     public Object newContainerAnvil(Player player, String guiTitle) {
         if (IS_ONE_SEVENTEEN_ONE){
-            return new AnvilContainer1_17_1_R1(player,getRealNextContainerId(player),guiTitle);
+            return new net.wesjd.anvilgui.version.special.AnvilContainer1_17_1_R1(player,getRealNextContainerId(player),guiTitle);
         }
         return new AnvilContainer(player, guiTitle);
     }
